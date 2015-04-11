@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Char/Scripts/PlayerMovement.cs">
+    <Files>
+      <File FileName="Assets/Char/Scripts/Player.cs" Line="299" Column="3" />
+      <File FileName="Assets/Char/Scripts/PlayerMovement.cs" Line="12" Column="28" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
