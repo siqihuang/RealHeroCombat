@@ -37,7 +37,7 @@ public class EntityBase : MonoBehaviour
 	protected HpBarUI hpbar_ui;
 	protected MpBarUI mpbar_ui;
 
-	protected PlayerMovement player_motion;
+	public PlayerMovement player_motion;
 
 	//side
 	int side;
