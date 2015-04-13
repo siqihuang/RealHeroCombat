@@ -21,21 +21,11 @@ public class PlayerMovement : MonoBehaviour
 	void FixedUpdate ()
 	{
 		/*
-		float h = Input.GetAxisRaw ("Horizontal");
 		float v = Input.GetAxisRaw ("Vertical");
-		bool to_move  =  false;
-
-		//test move
-		if(h != 0f)
-		{
-			to_move = true;
-		}
 		if(v != 0f)
 		{
-			to_move = false;
-			TestAttack();
+			animator.SetBool ("is_attacking",  v == 0f);
 		}
-		TestMove(to_move);	
 		*/
 	}
 
@@ -64,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 	public IEnumerator AttackOnce(Vector3 tar_pos)
 	{
 		EnterAttack(tar_pos);
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(1);
 		ExitAttack();
 	}
 	
@@ -80,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
 		animator.SetBool ("is_attacking", false);
 	}
 	
-	
 	public bool IsAttacking()
 	{
 		return animator.GetBool("is_attacking");
@@ -88,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
 	public void TestAttack()
 	{
-		AttackOnce(transform.position);
+		StartCoroutine(AttackOnce(transform.position));
 	}
 
 	public void TestMove(bool flag)
