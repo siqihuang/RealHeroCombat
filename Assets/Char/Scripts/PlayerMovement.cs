@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 		float v = Input.GetAxisRaw ("Vertical");
 		if(v != 0f)
 		{
-			animator.SetBool ("is_attacking",  v == 0f);
+			TestAttack();
 		}
 		*/
 	}
@@ -77,7 +77,8 @@ public class PlayerMovement : MonoBehaviour
 
 	public void TestAttack()
 	{
-		StartCoroutine(AttackOnce(transform.position));
+		//StartCoroutine(AttackOnce(transform.position));
+		animator.SetTrigger("TriggerAttack");
 	}
 
 	public void TestMove(bool flag)
