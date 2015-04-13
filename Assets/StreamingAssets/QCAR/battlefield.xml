@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="BattleFieldQ3" size="540.000000 540.000000" />
+    <ImageTarget name="BattleFieldQ2" size="540.000000 540.000000" />
+    <ImageTarget name="BattleFieldQ4" size="540.000000 540.000000" />
+    <ImageTarget name="BattleFieldQ5" size="540.000000 540.000000" />
+    <ImageTarget name="BattleFieldQ1" size="540.000000 540.000000" />
+    <ImageTarget name="10USDollar" size="540.000000 238.949997" />
     <ImageTarget name="1USDollar" size="540.000000 227.528091" />
   </Tracking>
 </QCARConfig>
