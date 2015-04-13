@@ -8,8 +8,9 @@ public class PlayerMovement : MonoBehaviour
 	Vector3 movement;                   // The vector to store the direction of the player's movement.
 	Animator animator; // Reference to the animator component.
 	public Camera myCam;
+
 	//audio
-	public AudioClip att_sound;
+	//public AudioClip att_sound;
 	
 	void Awake ()
 	{
@@ -19,47 +20,26 @@ public class PlayerMovement : MonoBehaviour
 	
 	void FixedUpdate ()
 	{
-		//get the current state
-		//AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-		
-		//if we're in "Run" mode, respond to input for jump, and set the Jump parameter accordingly. 
 		/*
-		if(stateInfo.nameHash == Animator.StringToHash("Base Layer.idle"))
-		{
-			if(Input.GetButton("Fire1")) 
-				animator.SetBool("Jump", true );
-		}
-		*/
-		if(Input.GetButton("Jump"))
-		{
-			animator.SetBool ("is_jumping", true) ;
-			return;
-		}
-		else
-		{
-			animator.SetBool ("is_jumping", false) ;
-		}
 		float h = Input.GetAxisRaw ("Horizontal");
 		float v = Input.GetAxisRaw ("Vertical");
-		bool to_move = (h != 0f || v != 0f);	
-		if(to_move)
-		{
-			
-			//movement.Set (h, 0f, v);
-			//debug: horizontal view
-			//movement.Set (v, 0f, h);
+		bool to_move  =  false;
 
-			//movement = Input.GetAxis("Vertical") * Camera.transform.forward + Input.GetAxis("Horizontal") * Camera.transform.right;
-			movement = myCam.transform.forward * v * 0.3f + h * myCam.transform.right*0.2f;
-			movement.y = 0;
-			//movement = movement.normalized * speed * Time.deltaTime;
-			Turning (movement);
+		//test move
+		if(h != 0f)
+		{
+			to_move = true;
 		}
-		Move (to_move);
+		if(v != 0f)
+		{
+			to_move = false;
+			TestAttack();
+		}
+		TestMove(to_move);	
+		*/
 	}
 
-
-	void Move (bool need_walk)
+	public void Move (bool need_walk)
 	{
 		//bool state = animator.GetBool("is_walking");
 		if(need_walk) 
@@ -80,12 +60,19 @@ public class PlayerMovement : MonoBehaviour
 		newRotation =  Quaternion.Lerp(transform.rotation, newRotation,  0.5f);
 		rigidbody.MoveRotation (newRotation);
 	}
+
+	public IEnumerator AttackOnce(Vector3 tar_pos)
+	{
+		EnterAttack(tar_pos);
+		yield return new WaitForSeconds(1.5f);
+		ExitAttack();
+	}
 	
 	public void EnterAttack(Vector3 tar_pos)
 	{
 		animator.SetBool ("is_attacking", true);
 		transform.LookAt(tar_pos);
-		AudioSource.PlayClipAtPoint(att_sound, transform.position);
+		//AudioSource.PlayClipAtPoint(att_sound, transform.position);
 	}
 	
 	public void ExitAttack()
@@ -97,5 +84,15 @@ public class PlayerMovement : MonoBehaviour
 	public bool IsAttacking()
 	{
 		return animator.GetBool("is_attacking");
+	}
+
+	public void TestAttack()
+	{
+		AttackOnce(transform.position);
+	}
+
+	public void TestMove(bool flag)
+	{
+		Move(flag);
 	}
 }

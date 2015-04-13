@@ -6,36 +6,41 @@ public class EntityBase : MonoBehaviour
 	//basic attributes
 	protected int max_hp; //health point
 	protected int cur_hp;
-	
-	protected int max_level; //level
-	protected int cur_level; //level
-	
+	protected int hp_recover_dur;
+		
+	protected int max_mp; //magic point
+	protected int cur_mp;
+	protected int mp_recover_dur;
+
 	protected int cur_att; //attack
+	protected int att_rand; 
 	protected int att_range;
-	
-	
+
+	protected int armor;	
+	protected int armor_extra;	
+
 	protected Animator animator;  
 	
 	//TIME LAPSE
 	protected float MOVE_TIMELAPSE = 0.02f;
 	protected float CHECK_RANGE_DUR = 0.5f;
 	protected float ATT_TIMELAPSE;
-	
-	//move
-	protected float move_speed;
-	protected Vector3 move_tar;
-	protected Vector3 move_step;
-	protected int chase_range;
-	
-	
-	protected GameObject enemy_tar;
-	
+
 	//state
 	protected int state;
 	protected int MOVE_STATE 	= 1;
 	protected int CHASE_STATE = 2;
 	protected int ATT_STATE 	= 3;
 	protected int DEAD_STATE 	= 4;
+
+	//UI
+	protected HpBarUI hpbar_ui;
+	protected MpBarUI mpbar_ui;
+
+	protected PlayerMovement player_motion;
+
+	//side
+	int side;
 	
 	// Use this for initialization
 	void Start () 
@@ -57,73 +62,29 @@ public class EntityBase : MonoBehaviour
 	{
 		return Vector3.Distance(transform.position, tar);
 	}
-	
-	protected bool CheckChasingDistance(Vector3 tar)
-	{
-		return GetDistance(tar) <= chase_range;
-	}
-	
+
 	protected bool CheckAttDistance(Vector3 tar)
 	{
-		/*
-		float col_size = 0;
-		if(col.GetType() == typeof(CapsuleCollider))
-		{
-			CapsuleCollider tmp = col;
-			col_size = tmp.radius;
-		}
-		else if (col.GetType() == typeof(BoxCollider))
-		{
-			BoxCollider tmp = col;
-			col_size = Mathf.Max(tmp.size.x, tmp.size.z);
-		}
-		return GetDistance(col.transform.position) - col_size <= att_range;
-		*/
 		return GetDistance(tar) <= att_range;
 	}
-	
-	protected virtual IEnumerator _DoMove()
-	{
-		yield break;
-	}
-	
+
 	protected void DoMove()
 	{
-		StartCoroutine(_DoMove());
+		//StartCoroutine(_DoMove());
 	}
-	
-	protected virtual IEnumerator _DoAttack(GameObject other)
-	{
-		yield break;
-	}
-	
+
 	protected void DoAttack(GameObject other)
 	{
-		StartCoroutine(_DoAttack(other));
+		//StartCoroutine(_DoAttack(other));
 	}
 	
 	public int GetAtt()
 	{
-		return cur_att;
+		return cur_att + Random.Range(-att_rand, att_rand);
 	}
 	
-	public int GetLevel()
+	public virtual void GetDamage(int damage)
 	{
-		return cur_level;
-	}
-	
-	protected virtual void GetDamageWithAtt(int damage)
-	{
-		cur_hp = Mathf.Max (0, cur_hp - damage);
-		if(cur_hp <= 0)
-		{
-			OnDie();
-		}	
-	}
-	
-	protected virtual void GetDamage(EntityBase tar)
-	{
-		int damage = tar.GetAtt();
 		cur_hp = Mathf.Max (0, cur_hp - damage);
 		if(cur_hp <= 0)
 		{
@@ -136,7 +97,12 @@ public class EntityBase : MonoBehaviour
 		state = DEAD_STATE;
 		Destroy(gameObject);
 	}
-	
+
+	public virtual int GetSide() 
+	{
+		return side;
+	}
+
 	protected virtual void OnCollisionEnter(Collision other) 
 	{
 		
@@ -147,10 +113,16 @@ public class EntityBase : MonoBehaviour
 		
 	}
 	
-	protected virtual bool IsEnemy(GameObject other) 
+	protected virtual bool IsEnemy(EntityBase other) 
 	{
-		return false;
+		return other.GetSide() != side ;
 	}
+
+	protected virtual int GetArmor() 
+	{
+		return armor + armor_extra;
+	}
+
 }
 
 

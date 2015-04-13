@@ -34,3 +34,7 @@
  Thumbs.db
 
  demo.app
+*.csproj
+*.unityproj
+*.sln
+*.userprefs
