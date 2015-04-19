@@ -259,13 +259,13 @@ public class EntityBase : MonoBehaviour
 	void RefreshHpUI()
 	{
 		float ratio = (float)cur_hp/(float)max_hp;
-		hpbar_ui.UpdateHp(ratio) ;
+		//hpbar_ui.UpdateHp(ratio) ;
 	}
 	
 	void RefreshMpUI()
 	{
 		float ratio = (float)cur_mp/(float)max_mp;
-		mpbar_ui.UpdateMp(ratio) ;
+		//mpbar_ui.UpdateMp(ratio) ;
 	}
 	//=================UI====================
 		

@@ -33,16 +33,20 @@ public class screenGUI : MonoBehaviour,ITrackableEventHandler {
 			playerMovement.TestMove(false);
 			//playerTrack.SetActive(false);
 		}
-		if (GUI.Button (new Rect (700, 150, 50, 50), s1)){
-			playerMovement.TestMove(true);
-			//playerTrack.SetActive(true);
+
+		if (GUI.Button (new Rect (700, 150, 50, 50), s1))
+		{
+			hero.UseSkill(1);
 		}
-		if (GUI.Button (new Rect (700, 210, 50, 50), s2)) {
-			playerMovement.TestAttack();
+
+		if (GUI.Button (new Rect (700, 210, 50, 50), s2)) 
+		{
+			hero.UseSkill(2);
 		}
-		if (GUI.Button (new Rect (700, 270, 50, 50), s3)) {
-			playerMovement.TestMove(false);
-			//playerTrack.SetActive(false);
+
+		if (GUI.Button (new Rect (700, 270, 50, 50), s3)) 
+		{
+			hero.UseSkill(3);
 		}
 	}
 

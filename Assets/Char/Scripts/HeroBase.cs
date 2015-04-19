@@ -50,8 +50,31 @@ public class HeroBase : EntityBase
 		return true;
 	}
 
-	public void UseSkill(SkillBase skill)
+	public SkillBase GetSkillByIndex(int index)
 	{
+		if(index > skill_list.Length)
+		{
+			Debug.LogError("[GetSkillById] index is too big!" + index.ToString());
+			return null;
+		}
+		return skill_list[index - 1];
+		/*
+		for(int i = 0; i < skill_list.Length; ++i)		
+		{
+			if(skill_list[i].Id == id)
+			{
+				return skill_list[i];
+			}
+		}
+		return null;
+		*/
+	}
+
+	public void UseSkill(int index)
+	{
+		SkillBase skill = GetSkillByIndex(index);
+		if(skill == null) return;
+
 		if (!CanUse(skill))
 		{
 			return;
