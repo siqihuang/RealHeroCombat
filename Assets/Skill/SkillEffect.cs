@@ -33,7 +33,7 @@ public class SkillEffect : MonoBehaviour
 
 	void OnCollisionEnter(Collision other) 
 	{
-		if(other.collider.CompareTag("Entity") || other.collider.CompareTag(""))
+		if(other.collider.CompareTag("Entity") || other.collider.CompareTag("Hero"))
 		{
 			other.collider.gameObject.SendMessage("GetDamageWithAtt", damage, SendMessageOptions.DontRequireReceiver);
 			OnArriveDest();

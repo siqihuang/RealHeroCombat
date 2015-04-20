@@ -7,13 +7,8 @@ using System.Collections;
 
 public class Skill_1 : SkillBase
 {
-	/*
-	public Skill_1()
-	{
-		init();
-	}
-	*/
 	public Buff_1 buff	;
+	public GameObject vfx;
 
 	protected override void init()
 	{
@@ -27,7 +22,8 @@ public class Skill_1 : SkillBase
 		max_cd = 0;
 		cur_cd = 0;
 
-		vfx_name = "SkillFireVfx";
+		//vfx_name = "SkillFireVfx";
+		vfx_name = "Skill_1";
 
 		buff = new Buff_1();
 
@@ -41,6 +37,7 @@ public class Skill_1 : SkillBase
 		//absorb hp
 		int add_hp = (int)(hero.Att * 0.1f);
 		hero.AddHp(add_hp);
-		//Instantiate(vfx, hero.transform.position, Quaternion.identity);
+
+		Instantiate(vfx, hero.transform.position, Quaternion.identity);
 	}
 }

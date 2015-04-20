@@ -11,6 +11,8 @@ public class Skill_3 : SkillBase
 	private int add_hp;
 	GameObject obj;
 
+	public GameObject vfx;
+
 	protected override void init() 
 	{
 		id = 3;
@@ -26,20 +28,11 @@ public class Skill_3 : SkillBase
 		Debug.Log("[SKILL][init]: " + name);
 	}
 	
-	// Update is called once per frame
-	void Update () 
-	{
-		/*
-		if(obj)
-		{
-			obj.transform.position = p.transform.position;
-		}
-		*/
-	}
-
 	protected override void DoEffect(HeroBase hero)
 	{
 		base.DoEffect(hero);
+
+		Instantiate(vfx, hero.transform.position, Quaternion.identity) ;
 		//Vector3 position = p.transform.position;
 		//p.AttackOnce(position);
 		//p.AddHp(add_hp);
