@@ -8,9 +8,11 @@ public class Skill_2 : SkillBase
 {
 	float move_speed;
 	float move_distance;
-	public SkillEffect fire_ball;
 	int damage ;
 
+	public GameObject vfx;
+	public SkillEffect se;
+	
 	// Use this for initialization
 	protected override void init()
 	{
@@ -25,7 +27,7 @@ public class Skill_2 : SkillBase
 		//cold_down = 1;
 		//need_mp = 1;
 
-		vfx_name = "SkillFireVfx";
+		vfx_name = "Skill_2";
 		move_speed = 10;
 		move_distance = 5;
 		damage = 100;
@@ -41,12 +43,13 @@ public class Skill_2 : SkillBase
 	protected override void DoEffect(HeroBase hero)
 	{
 		base.DoEffect(hero);
-		/*
-		Vector3  st_pos = p.transform.position;
+
+		Vector3  st_pos = hero.transform.position;
 		st_pos.y += 2;
-		Instantiate(Resources.Load(vfx_name), st_pos, p.transform.rotation);
-		SkillEffect ball = Instantiate(fire_ball, st_pos, Quaternion.identity) as SkillEffect;
-		ball.TriggerActive(st_pos, p.transform.forward,  move_speed, damage);
-		*/
+		//Instantiate(Resources.Load("Skill_2"), st_pos, hero.transform.rotation);
+		Instantiate(vfx, st_pos, Quaternion.identity) ;
+
+		SkillEffect ball = Instantiate(se, st_pos, Quaternion.identity) as SkillEffect;
+		ball.TriggerActive(st_pos, hero.transform.forward,  move_speed, damage);
 	}
 }

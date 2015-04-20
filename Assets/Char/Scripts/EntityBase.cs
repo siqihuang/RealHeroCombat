@@ -134,7 +134,7 @@ public class EntityBase : MonoBehaviour
 
 	bool CanAttack(EntityBase other)
 	{
-		if(other.tag == "Enemy" && CheckAttDistance(other.transform.position))
+		if(IsEnemy(other) && CheckAttDistance(other.transform.position))
 		{
 			EntityBase ins = other.gameObject.GetComponent<EntityBase>();
 			if(ins)
@@ -152,7 +152,6 @@ public class EntityBase : MonoBehaviour
 		{
 			player_motion.EnterAttack(other.transform.position);
 			other.GetDamage(Att);
-		
 			//Vfx
 		}
 	}

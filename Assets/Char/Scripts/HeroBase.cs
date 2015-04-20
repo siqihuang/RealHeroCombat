@@ -10,6 +10,9 @@ public class HeroBase : EntityBase
 	protected int cur_level; 
 
 	protected SkillBase [] skill_list;
+	public SkillBase skill_1;
+	public SkillBase skill_2;
+	public SkillBase skill_3;
 
 	protected override void init() 
 	{
@@ -58,9 +61,9 @@ public class HeroBase : EntityBase
 
 	public SkillBase GetSkillByIndex(int index)
 	{
-		if(index > skill_list.Length)
+		if(index > skill_list.Length || index < 1)
 		{
-			Debug.LogError("[GetSkillById] index is too big!" + index.ToString());
+			Debug.LogError("[GetSkillById] index is invalid !" + index.ToString());
 			return null;
 		}
 		return skill_list[index - 1];
@@ -79,7 +82,11 @@ public class HeroBase : EntityBase
 	public void UseSkill(int index)
 	{
 		SkillBase skill = GetSkillByIndex(index);
-		if(skill == null) return;
+		if(skill == null) 
+		{
+			Debug.LogError("GetSkillByIndex is null: " + index.ToString());
+			return;
+		}
 
 		if (!CanUse(skill))
 		{

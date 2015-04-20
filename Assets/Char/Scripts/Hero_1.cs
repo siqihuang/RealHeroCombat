@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Hero_1:  HeroBase
 {
-
 	protected override void init() 
 	{
 		//initialize all attributes here
@@ -41,15 +40,27 @@ public class Hero_1:  HeroBase
 		Skill_1 skill_1 = Instantiate(skill_1) as Skill_1;
 		Skill_2 skill_2 = Instantiate(skill_2) as Skill_2;
 		Skill_3 skill_3 = Instantiate(skill_3) as Skill_3;
-		*/
 
 		Skill_1 skill_1 = new Skill_1();
 		Skill_2 skill_2 = new Skill_2();
 		Skill_3  skill_3 = new Skill_3();
+		*/
 
 		skill_list = new SkillBase[3];
-		skill_list[0] =skill_1;
-		skill_list[1] =skill_2;
-		skill_list[2] =skill_3;
+		/*
+		skill_list[0] = skill_1;
+		skill_list[1] = skill_2;
+		skill_list[2] = skill_3;
+		*/
+
+		skill_1  = Instantiate(skill_1) as Skill_1;
+		skill_2  = Instantiate(skill_2) as Skill_2;
+		skill_3  = Instantiate(skill_3) as Skill_3;
+
+		skill_list[0] = skill_1;
+		skill_list[1] = skill_2;
+		skill_list[2] = skill_3;
+
+		Debug.Log("InitSkill" + "jason");
 	}
 }

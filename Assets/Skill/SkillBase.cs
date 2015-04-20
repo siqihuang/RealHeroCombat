@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SkillBase
+public class SkillBase: MonoBehaviour
 {
 	protected int id;
 	protected string test_name;
@@ -40,7 +40,7 @@ public class SkillBase
 		max_cd = 5;
 		cur_cd = 0;
 
-		vfx_name = "SkillFireVfx";
+		vfx_name = "";
 		Debug.Log("[SKILL][init]: " + name);
 	}
 
