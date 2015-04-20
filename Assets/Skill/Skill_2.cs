@@ -7,7 +7,6 @@ using System.Collections;
 public class Skill_2 : SkillBase
 {
 	float move_speed;
-	float move_distance;
 	int damage ;
 
 	public GameObject vfx;
@@ -28,8 +27,7 @@ public class Skill_2 : SkillBase
 		//need_mp = 1;
 
 		vfx_name = "Skill_2";
-		move_speed = 10;
-		move_distance = 5;
+		move_speed = 3;
 		damage = 100;
 
 		Debug.Log("[SKILL][init]: " + name);
@@ -45,11 +43,11 @@ public class Skill_2 : SkillBase
 		base.DoEffect(hero);
 
 		Vector3  st_pos = hero.transform.position;
-		st_pos.y += 2;
+		//st_pos.y += 2;
 		//Instantiate(Resources.Load("Skill_2"), st_pos, hero.transform.rotation);
-		Instantiate(vfx, st_pos, Quaternion.identity) ;
+		vfx = Instantiate(vfx, st_pos, Quaternion.identity) as GameObject;
 
 		SkillEffect ball = Instantiate(se, st_pos, Quaternion.identity) as SkillEffect;
-		ball.TriggerActive(st_pos, hero.transform.forward,  move_speed, damage);
+		ball.TriggerActive(st_pos, hero.transform.forward,  move_speed, damage, vfx);
 	}
 }
