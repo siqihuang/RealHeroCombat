@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Hero_1:  HeroBase
+public class Hero_3 : HeroBase
 {
-
 	protected override void init() 
 	{
 		//initialize all attributes here
