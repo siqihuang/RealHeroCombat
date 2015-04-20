@@ -13,14 +13,14 @@ public class Skill_1 : SkillBase
 		init();
 	}
 	*/
-
+	public Buff_1 buff	;
 
 	protected override void init()
 	{
 		//each child should have its own initialization
 		id = 0;
 		test_name = "xixue guanghuan";
-		name = "xixue guanghuan";
+		name = "xixue";
 
 		need_mp = 0;
 
@@ -28,6 +28,8 @@ public class Skill_1 : SkillBase
 		cur_cd = 0;
 
 		vfx_name = "SkillFireVfx";
+
+		buff = new Buff_1();
 
 		Debug.Log("[SKILL][init]: " + name);
 	}
