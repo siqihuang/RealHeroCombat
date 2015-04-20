@@ -3,6 +3,12 @@ using System.Collections;
 
 public class HeroBase : EntityBase
 {
+	protected int max_exp; 
+	protected int cur_exp; 
+	
+	protected int max_level; //level
+	protected int cur_level; 
+
 	protected SkillBase [] skill_list;
 
 	protected override void init() 

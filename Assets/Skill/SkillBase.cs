@@ -44,6 +44,18 @@ public class SkillBase
 		Debug.Log("[SKILL][init]: " + name);
 	}
 
+	public int Id
+	{
+		get
+		{ 
+			return id; 
+		}
+		private set 
+		{ 
+			id = value;
+		}
+	}
+
 	public string Name
 	{
 		get

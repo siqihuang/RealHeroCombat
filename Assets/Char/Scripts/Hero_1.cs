@@ -3,11 +3,6 @@ using System.Collections;
 
 public class Hero_1:  HeroBase
 {
-	private int max_exp; 
-	private int cur_exp; 
-	
-	private int max_level; //level
-	private int cur_level; 
 
 	protected override void init() 
 	{
@@ -29,6 +24,9 @@ public class Hero_1:  HeroBase
 		armor = (cur_level * 2);
 		cur_att  = (cur_level) * 20;
 		att_range =  4;
+
+		move_speed = 4;	
+		extra_move_speed = 0;
 
 		//hpbar_ui = GameObject.Find("HpBarUI").GetComponent<HpBarUI>(); 
 		//mpbar_ui = GameObject.Find("MpBarUI").GetComponent<MpBarUI>(); 

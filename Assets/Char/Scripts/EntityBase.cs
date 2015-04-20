@@ -27,6 +27,10 @@ public class EntityBase : MonoBehaviour
 	protected int att_range;
 	protected int extra_att;
 
+	//speed
+	protected int move_speed;
+	protected int extra_move_speed;
+
 	//armor
 	protected int armor;	
 	protected int extra_armor;	
@@ -50,7 +54,7 @@ public class EntityBase : MonoBehaviour
 	protected HpBarUI hpbar_ui;
 	protected MpBarUI mpbar_ui;
 
-	public PlayerMovement player_motion;
+	protected PlayerMovement player_motion;
 
 
 	// Use this for initialization
@@ -96,6 +100,12 @@ public class EntityBase : MonoBehaviour
 	{
 		//StartCoroutine(_DoMove());
 	}
+
+	public int  MoveSpeed
+	{
+		get{return move_speed + extra_move_speed;}
+	}
+	
 	//=============position================
 
 	//=============attack================
